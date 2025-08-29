@@ -8,15 +8,16 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
-    <!-- Chosen Palette: Warm Neutrals -->
-    <!-- Application Structure Plan: The SPA uses an interactive accordion/card-based layout instead of a static list. This structure was chosen to make the rules more engaging and less intimidating to a new user. It breaks down the information into scannable titles, allowing users to explore the details of each rule by clicking. This encourages active learning and improves readability over a single wall of text. The flow is linear: Welcome -> Interactive Rules -> Consequences -> Contact. -->
-    <!-- Visualization & Content Choices: Report Info: Six server rules. -> Goal: Organize & Inform. -> Viz/Presentation Method: Interactive HTML/CSS cards in a grid. -> Interaction: On-click accordion to reveal rule details. -> Justification: Improves engagement and prevents information overload. -> Library/Method: Vanilla JS for interaction, Tailwind for styling. Report Info: Consequences. -> Goal: Inform/Warn. -> Presentation: A visually distinct section with icons (Unicode characters). -> Justification: Highlights critical information for scannability. -> Library/Method: HTML/Tailwind. -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Chosen Palette: Fresh Mint & Soft Gray -->
+    <!-- Application Structure Plan: The SPA uses a clean, light-themed layout with a focus on scannability. It features a prominent hero-style header, a two-column grid for the rules with a card-based accordion for interaction, a visually separate consequences section, and a minimalist footer with social links. This structure is designed for a simple, intuitive user experience that makes rules easy to digest. -->
+    <!-- Visualization & Content Choices: Report Info: Six server rules. -> Goal: Organize & Inform. -> Viz/Presentation Method: Interactive HTML/CSS cards in a grid with a uniform icon set. -> Interaction: On-click accordion to reveal rule details. Subtle hover effects for feedback. -> Justification: The use of a professional icon library creates a modern and polished aesthetic. -> Library/Method: Vanilla JS for interaction, Tailwind for styling, Font Awesome for icons. Report Info: Consequences. -> Goal: Inform/Warn. -> Presentation: A distinct, colored section with clear, bold text and icons. -> Justification: Clearly separates a critical message from the main rules with a high-contrast design. -> Library/Method: HTML/Tailwind. New Info: Social media links. -> Goal: Provide external links. -> Presentation: A minimalist footer with stylized text links and icons. -> Justification: Keeps the footer clean and focuses on a few key links. -> Library/Method: HTML/Tailwind. -->
     <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #F8F7F4;
-            color: #1a1a1a;
+            background-color: #F0F4F8;
+            color: #1A202C;
         }
         .rule-card-content {
             max-height: 0;
@@ -32,119 +33,118 @@
         .icon-arrow {
             transition: transform 0.3s ease-in-out;
         }
+        .social-link:hover {
+            transform: translateY(-3px);
+        }
     </style>
 </head>
 <body class="antialiased">
 
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
 
-        <header class="text-center mb-12">
-            <h1 class="text-4xl sm:text-5xl font-bold tracking-tight text-gray-800">Server Rules</h1>
-            <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">Welcome to our community! To make sure everyone has a great time, please take a moment to read and follow these rules. By being here, you agree to them.</p>
+        <header class="text-center mb-16">
+            <h1 class="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900">Community Guidelines</h1>
+            <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">Welcome to our community! Please take a moment to review and agree to our guidelines for a great experience for everyone.</p>
         </header>
 
         <main>
-            <div id="rules-container" class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            <div id="rules-container" class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
                 
-                <div class="rule-card bg-white rounded-xl shadow-md overflow-hidden cursor-pointer" data-rule="1">
+                <div class="rule-card bg-white rounded-xl shadow-md overflow-hidden cursor-pointer hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1" data-rule="1">
                     <div class="p-6 flex justify-between items-center">
                         <div class="flex items-center space-x-4">
-                            <span class="text-2xl">🤝</span>
-                            <h2 class="text-xl font-semibold text-gray-900">Be Respectful</h2>
+                            <i class="fa-solid fa-handshake text-3xl text-green-500"></i>
+                            <h2 class="text-xl font-semibold text-gray-800">Be Respectful</h2>
                         </div>
-                        <span class="icon-arrow text-2xl text-gray-400">▼</span>
+                        <span class="icon-arrow text-2xl text-gray-500">▼</span>
                     </div>
                     <div class="rule-card-content px-6 pb-6">
-                        <p class="text-gray-700">Treat everyone with kindness and respect. We don't tolerate any form of harassment, hate speech, or personal attacks. This includes insults, slurs, and discrimination based on gender, race, religion, sexual orientation, or any other personal attribute.</p>
+                        <p class="text-gray-600">Treat everyone with kindness and respect. We have a zero-tolerance policy for harassment, hate speech, and personal attacks. This includes insults, slurs, and discrimination based on any personal attribute.</p>
                     </div>
                 </div>
 
-                <div class="rule-card bg-white rounded-xl shadow-md overflow-hidden cursor-pointer" data-rule="2">
+                <div class="rule-card bg-white rounded-xl shadow-md overflow-hidden cursor-pointer hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1" data-rule="2">
                     <div class="p-6 flex justify-between items-center">
                         <div class="flex items-center space-x-4">
-                            <span class="text-2xl">😊</span>
-                            <h2 class="text-xl font-semibold text-gray-900">Keep it Friendly & Positive</h2>
+                            <i class="fa-solid fa-face-smile text-3xl text-green-500"></i>
+                            <h2 class="text-xl font-semibold text-gray-800">Keep it Friendly</h2>
                         </div>
-                        <span class="icon-arrow text-2xl text-gray-400">▼</span>
+                        <span class="icon-arrow text-2xl text-gray-500">▼</span>
                     </div>
                     <div class="rule-card-content px-6 pb-6">
-                        <p class="text-gray-700">This is a place for fun and good vibes! Please avoid excessive negativity, drama, or spamming. If you have a disagreement, try to resolve it calmly and privately.</p>
+                        <p class="text-gray-600">This is a place for fun and good vibes! Please avoid excessive negativity, drama, or spamming. If you have a disagreement, try to resolve it calmly and privately.</p>
                     </div>
                 </div>
 
-                <div class="rule-card bg-white rounded-xl shadow-md overflow-hidden cursor-pointer" data-rule="3">
+                <div class="rule-card bg-white rounded-xl shadow-md overflow-hidden cursor-pointer hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1" data-rule="3">
                     <div class="p-6 flex justify-between items-center">
                         <div class="flex items-center space-x-4">
-                            <span class="text-2xl">🔞</span>
-                            <h2 class="text-xl font-semibold text-gray-900">No NSFW Content</h2>
+                            <i class="fa-solid fa-circle-xmark text-3xl text-green-500"></i>
+                            <h2 class="text-xl font-semibold text-gray-800">No NSFW Content</h2>
                         </div>
-                        <span class="icon-arrow text-2xl text-gray-400">▼</span>
+                        <span class="icon-arrow text-2xl text-gray-500">▼</span>
                     </div>
                     <div class="rule-card-content px-6 pb-6">
-                        <p class="text-gray-700">Keep all content safe for work (SFW). This means no explicit, graphically violent, or inappropriate images, videos, or links. We want this to be a safe space for all members.</p>
+                        <p class="text-gray-600">Keep all content safe for work (SFW). This means no explicit, graphically violent, or inappropriate images, videos, or links. We want this to be a safe space for all members.</p>
                     </div>
                 </div>
 
-                <div class="rule-card bg-white rounded-xl shadow-md overflow-hidden cursor-pointer" data-rule="4">
+                <div class="rule-card bg-white rounded-xl shadow-md overflow-hidden cursor-pointer hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1" data-rule="4">
                     <div class="p-6 flex justify-between items-center">
                         <div class="flex items-center space-x-4">
-                            <span class="text-2xl">🚫</span>
-                            <h2 class="text-xl font-semibold text-gray-900">Don't Spam</h2>
+                            <i class="fa-solid fa-ban-smoking text-3xl text-green-500"></i>
+                            <h2 class="text-xl font-semibold text-gray-800">Don't Spam</h2>
                         </div>
-                        <span class="icon-arrow text-2xl text-gray-400">▼</span>
+                        <span class="icon-arrow text-2xl text-gray-500">▼</span>
                     </div>
                     <div class="rule-card-content px-6 pb-6">
-                        <p class="text-gray-700">Avoid flooding channels with the same message, images, or links. This includes excessive emojis, memes, or bot commands.</p>
+                        <p class="text-gray-600">Avoid flooding channels with the same message, images, or links. This includes excessive emojis, memes, or bot commands.</p>
                     </div>
                 </div>
 
-                <div class="rule-card bg-white rounded-xl shadow-md overflow-hidden cursor-pointer" data-rule="5">
+                <div class="rule-card bg-white rounded-xl shadow-md overflow-hidden cursor-pointer hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1" data-rule="5">
                     <div class="p-6 flex justify-between items-center">
                         <div class="flex items-center space-x-4">
-                            <span class="text-2xl">📢</span>
-                            <h2 class="text-xl font-semibold text-gray-900">No Self-Promotion</h2>
+                            <i class="fa-solid fa-volume-xmark text-3xl text-green-500"></i>
+                            <h2 class="text-xl font-semibold text-gray-800">No Self-Promotion</h2>
                         </div>
-                        <span class="icon-arrow text-2xl text-gray-400">▼</span>
+                        <span class="icon-arrow text-2xl text-gray-500">▼</span>
                     </div>
                     <div class="rule-card-content px-6 pb-6">
-                        <p class="text-gray-700">Please don't advertise your own server, products, or social media channels without permission from an admin. If you want to share something, ask an admin first!</p>
+                        <p class="text-gray-600">Please don't advertise your own server, products, or social media channels without permission from an admin. If you want to share something, ask an admin first!</p>
                     </div>
                 </div>
 
-                <div class="rule-card bg-white rounded-xl shadow-md overflow-hidden cursor-pointer" data-rule="6">
+                <div class="rule-card bg-white rounded-xl shadow-md overflow-hidden cursor-pointer hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1" data-rule="6">
                     <div class="p-6 flex justify-between items-center">
                         <div class="flex items-center space-x-4">
-                            <span class="text-2xl">📜</span>
-                            <h2 class="text-xl font-semibold text-gray-900">Follow Discord's ToS</h2>
+                            <i class="fa-solid fa-gavel text-3xl text-green-500"></i>
+                            <h2 class="text-xl font-semibold text-gray-800">Follow Discord's ToS</h2>
                         </div>
-                        <span class="icon-arrow text-2xl text-gray-400">▼</span>
+                        <span class="icon-arrow text-2xl text-gray-500">▼</span>
                     </div>
                     <div class="rule-card-content px-6 pb-6">
-                        <p class="text-gray-700">You must follow all of Discord's own Terms of Service. If you violate their rules, you will also be removed from our server.</p>
+                        <p class="text-gray-600">You must follow all of Discord's own Terms of Service. If you violate their rules, you will also be removed from our server.</p>
                     </div>
                 </div>
 
             </div>
 
-            <section class="mt-16 text-center max-w-3xl mx-auto">
-                <h2 class="text-3xl font-bold text-gray-800">Consequences</h2>
+            <section class="mt-16 text-center max-w-3xl mx-auto p-8 rounded-xl bg-red-50 border-l-4 border-red-500">
+                <h2 class="text-3xl font-bold text-red-800">Consequences</h2>
                 <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-6 text-left">
-                    <div class="bg-amber-50 border-l-4 border-amber-400 p-6 rounded-r-lg">
-                        <div class="flex items-start space-x-4">
-                            <span class="text-3xl mt-1">⚠️</span>
-                            <div>
-                                <h3 class="font-semibold text-lg text-amber-900">Minor Offenses</h3>
-                                <p class="text-amber-800 mt-1">Minor offenses will result in a warning from our moderation team.</p>
-                            </div>
+                    <div class="flex items-start space-x-4">
+                        <i class="fa-solid fa-triangle-exclamation text-3xl mt-1 text-red-500"></i>
+                        <div>
+                            <h3 class="font-semibold text-lg text-red-900">Minor Offenses</h3>
+                            <p class="text-red-800 mt-1">Minor offenses will result in a warning from our moderation team.</p>
                         </div>
                     </div>
-                    <div class="bg-red-50 border-l-4 border-red-500 p-6 rounded-r-lg">
-                         <div class="flex items-start space-x-4">
-                            <span class="text-3xl mt-1">⚖️</span>
-                            <div>
-                                <h3 class="font-semibold text-lg text-red-900">Serious/Repeated Offenses</h3>
-                                <p class="text-red-800 mt-1">Repeated or serious offenses will lead to a temporary or permanent ban from the server.</p>
-                            </div>
+                    <div class="flex items-start space-x-4">
+                        <i class="fa-solid fa-scale-balanced text-3xl mt-1 text-red-500"></i>
+                        <div>
+                            <h3 class="font-semibold text-lg text-red-900">Serious/Repeated Offenses</h3>
+                            <p class="text-red-800 mt-1">Repeated or serious offenses will lead to a temporary or permanent ban from the server.</p>
                         </div>
                     </div>
                 </div>
@@ -152,9 +152,27 @@
 
         </main>
 
-        <footer class="mt-16 text-center text-gray-600">
-            <p class="mb-2">If you have any questions or see someone breaking the rules, please contact a moderator or admin.</p>
-            <p class="font-semibold text-lg">Thanks for being a part of our community! We're glad you're here!</p>
+        <footer class="mt-24 py-12 text-center">
+            <p class="mb-4 text-gray-600">If you have any questions or see someone breaking the rules, please contact a moderator or admin.</p>
+            <p class="font-semibold text-lg text-gray-800 mb-8">Thanks for being a part of our community! We're glad you're here!</p>
+            
+            <div class="flex flex-col items-center justify-center space-y-4">
+                <h3 class="text-xl font-bold text-gray-600">Connect with Us</h3>
+                <div class="flex justify-center items-center space-x-8">
+                    <a href="https://x.com/MeoriZuko" class="social-link text-gray-600 hover:text-blue-500 transition-colors" target="_blank">
+                        <i class="fa-brands fa-x-twitter text-4xl"></i>
+                    </a>
+                    <a href="https://www.facebook.com/profile.php?id=100063615044591" class="social-link text-gray-600 hover:text-blue-600 transition-colors" target="_blank">
+                        <i class="fa-brands fa-facebook text-4xl"></i>
+                    </a>
+                    <a href="https://www.youtube.com/@Rxl99" class="social-link text-gray-600 hover:text-red-600 transition-colors" target="_blank">
+                        <i class="fa-brands fa-youtube text-4xl"></i>
+                    </a>
+                    <a href="https://discord.gg/5sWxz6z5" class="social-link text-gray-600 hover:text-indigo-500 transition-colors" target="_blank">
+                        <i class="fa-brands fa-discord text-4xl"></i>
+                    </a>
+                </div>
+            </div>
         </footer>
 
     </div>
@@ -179,3 +197,4 @@
 
 </body>
 </html>
+
