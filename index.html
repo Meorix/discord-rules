@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server Rules</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Warm Neutrals -->
+    <!-- Application Structure Plan: The SPA uses an interactive accordion/card-based layout instead of a static list. This structure was chosen to make the rules more engaging and less intimidating to a new user. It breaks down the information into scannable titles, allowing users to explore the details of each rule by clicking. This encourages active learning and improves readability over a single wall of text. The flow is linear: Welcome -> Interactive Rules -> Consequences -> Contact. -->
+    <!-- Visualization & Content Choices: Report Info: Six server rules. -> Goal: Organize & Inform. -> Viz/Presentation Method: Interactive HTML/CSS cards in a grid. -> Interaction: On-click accordion to reveal rule details. -> Justification: Improves engagement and prevents information overload. -> Library/Method: Vanilla JS for interaction, Tailwind for styling. Report Info: Consequences. -> Goal: Inform/Warn. -> Presentation: A visually distinct section with icons (Unicode characters). -> Justification: Highlights critical information for scannability. -> Library/Method: HTML/Tailwind. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F8F7F4;
+            color: #1a1a1a;
+        }
+        .rule-card-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .rule-card.active .rule-card-content {
+            max-height: 500px;
+        }
+        .rule-card.active .icon-arrow {
+            transform: rotate(180deg);
+        }
+        .icon-arrow {
+            transition: transform 0.3s ease-in-out;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+
+        <header class="text-center mb-12">
+            <h1 class="text-4xl sm:text-5xl font-bold tracking-tight text-gray-800">Server Rules</h1>
+            <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">Welcome to our community! To make sure everyone has a great time, please take a moment to read and follow these rules. By being here, you agree to them.</p>
+        </header>
+
+        <main>
+            <div id="rules-container" class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+                
+                <div class="rule-card bg-white rounded-xl shadow-md overflow-hidden cursor-pointer" data-rule="1">
+                    <div class="p-6 flex justify-between items-center">
+                        <div class="flex items-center space-x-4">
+                            <span class="text-2xl">🤝</span>
+                            <h2 class="text-xl font-semibold text-gray-900">Be Respectful</h2>
+                        </div>
+                        <span class="icon-arrow text-2xl text-gray-400">▼</span>
+                    </div>
+                    <div class="rule-card-content px-6 pb-6">
+                        <p class="text-gray-700">Treat everyone with kindness and respect. We don't tolerate any form of harassment, hate speech, or personal attacks. This includes insults, slurs, and discrimination based on gender, race, religion, sexual orientation, or any other personal attribute.</p>
+                    </div>
+                </div>
+
+                <div class="rule-card bg-white rounded-xl shadow-md overflow-hidden cursor-pointer" data-rule="2">
+                    <div class="p-6 flex justify-between items-center">
+                        <div class="flex items-center space-x-4">
+                            <span class="text-2xl">😊</span>
+                            <h2 class="text-xl font-semibold text-gray-900">Keep it Friendly & Positive</h2>
+                        </div>
+                        <span class="icon-arrow text-2xl text-gray-400">▼</span>
+                    </div>
+                    <div class="rule-card-content px-6 pb-6">
+                        <p class="text-gray-700">This is a place for fun and good vibes! Please avoid excessive negativity, drama, or spamming. If you have a disagreement, try to resolve it calmly and privately.</p>
+                    </div>
+                </div>
+
+                <div class="rule-card bg-white rounded-xl shadow-md overflow-hidden cursor-pointer" data-rule="3">
+                    <div class="p-6 flex justify-between items-center">
+                        <div class="flex items-center space-x-4">
+                            <span class="text-2xl">🔞</span>
+                            <h2 class="text-xl font-semibold text-gray-900">No NSFW Content</h2>
+                        </div>
+                        <span class="icon-arrow text-2xl text-gray-400">▼</span>
+                    </div>
+                    <div class="rule-card-content px-6 pb-6">
+                        <p class="text-gray-700">Keep all content safe for work (SFW). This means no explicit, graphically violent, or inappropriate images, videos, or links. We want this to be a safe space for all members.</p>
+                    </div>
+                </div>
+
+                <div class="rule-card bg-white rounded-xl shadow-md overflow-hidden cursor-pointer" data-rule="4">
+                    <div class="p-6 flex justify-between items-center">
+                        <div class="flex items-center space-x-4">
+                            <span class="text-2xl">🚫</span>
+                            <h2 class="text-xl font-semibold text-gray-900">Don't Spam</h2>
+                        </div>
+                        <span class="icon-arrow text-2xl text-gray-400">▼</span>
+                    </div>
+                    <div class="rule-card-content px-6 pb-6">
+                        <p class="text-gray-700">Avoid flooding channels with the same message, images, or links. This includes excessive emojis, memes, or bot commands.</p>
+                    </div>
+                </div>
+
+                <div class="rule-card bg-white rounded-xl shadow-md overflow-hidden cursor-pointer" data-rule="5">
+                    <div class="p-6 flex justify-between items-center">
+                        <div class="flex items-center space-x-4">
+                            <span class="text-2xl">📢</span>
+                            <h2 class="text-xl font-semibold text-gray-900">No Self-Promotion</h2>
+                        </div>
+                        <span class="icon-arrow text-2xl text-gray-400">▼</span>
+                    </div>
+                    <div class="rule-card-content px-6 pb-6">
+                        <p class="text-gray-700">Please don't advertise your own server, products, or social media channels without permission from an admin. If you want to share something, ask an admin first!</p>
+                    </div>
+                </div>
+
+                <div class="rule-card bg-white rounded-xl shadow-md overflow-hidden cursor-pointer" data-rule="6">
+                    <div class="p-6 flex justify-between items-center">
+                        <div class="flex items-center space-x-4">
+                            <span class="text-2xl">📜</span>
+                            <h2 class="text-xl font-semibold text-gray-900">Follow Discord's ToS</h2>
+                        </div>
+                        <span class="icon-arrow text-2xl text-gray-400">▼</span>
+                    </div>
+                    <div class="rule-card-content px-6 pb-6">
+                        <p class="text-gray-700">You must follow all of Discord's own Terms of Service. If you violate their rules, you will also be removed from our server.</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <section class="mt-16 text-center max-w-3xl mx-auto">
+                <h2 class="text-3xl font-bold text-gray-800">Consequences</h2>
+                <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-6 text-left">
+                    <div class="bg-amber-50 border-l-4 border-amber-400 p-6 rounded-r-lg">
+                        <div class="flex items-start space-x-4">
+                            <span class="text-3xl mt-1">⚠️</span>
+                            <div>
+                                <h3 class="font-semibold text-lg text-amber-900">Minor Offenses</h3>
+                                <p class="text-amber-800 mt-1">Minor offenses will result in a warning from our moderation team.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-red-50 border-l-4 border-red-500 p-6 rounded-r-lg">
+                         <div class="flex items-start space-x-4">
+                            <span class="text-3xl mt-1">⚖️</span>
+                            <div>
+                                <h3 class="font-semibold text-lg text-red-900">Serious/Repeated Offenses</h3>
+                                <p class="text-red-800 mt-1">Repeated or serious offenses will lead to a temporary or permanent ban from the server.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <footer class="mt-16 text-center text-gray-600">
+            <p class="mb-2">If you have any questions or see someone breaking the rules, please contact a moderator or admin.</p>
+            <p class="font-semibold text-lg">Thanks for being a part of our community! We're glad you're here!</p>
+        </footer>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const ruleCards = document.querySelectorAll('.rule-card');
+
+            ruleCards.forEach(card => {
+                card.addEventListener('click', () => {
+                    const wasActive = card.classList.contains('active');
+                    
+                    ruleCards.forEach(c => c.classList.remove('active'));
+
+                    if (!wasActive) {
+                        card.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
